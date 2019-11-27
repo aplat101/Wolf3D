@@ -6,7 +6,7 @@
 #    By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/26 16:49:34 by aplat        #+#   ##    ##    #+#        #
-#    Updated: 2019/11/27 19:13:03 by aplat       ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/27 19:25:24 by aplat       ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -44,7 +44,7 @@ endif
 export CC = gcc
 export CC_FLAGS = -Wall -Wextra -Werror
 
-LIBFT = libft
+LIBFT = libft/libft.a
 
 # SRCS #
 
@@ -116,7 +116,7 @@ all : $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
 		@printf "\033[1mCompilation du projet \033[34m$@\033[0m \033[1men \033[31m$@\033[0m ✅\n"
-		@$(CC) $(CC_FLAGS) -o $@ $(OBJ) $(INCLUDES) $(FLAG_SDL)
+		@$(CC) $(CC_FLAGS) -o $@ $(OBJ) -L./libft -lft $(INCLUDES) $(FLAG_SDL)
 
 $(LIBFT):
 		@make -C libft
@@ -128,11 +128,18 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC)
 
 clean:
 		@ /bin/rm -rf $(OBJ_PATH)
+		@make clean -C libft
 
 fclean: clean
 		@ /bin/rm -f $(NAME)
+		@make fclean -C libft
 
 re: fclean all
+
+norme: 
+	@norminette $(SRC_PATH)
+	@norminette $(INC_PATH)
+	@norminette $(LIBFT)
 
 .PHONY: all, clean, fclean, re
 
