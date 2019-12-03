@@ -6,7 +6,7 @@
 #    By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/26 16:49:34 by aplat        #+#   ##    ##    #+#        #
-#    Updated: 2019/11/27 19:55:34 by aplat       ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/03 16:50:22 by aplat       ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -19,21 +19,9 @@ UNAME := $(shell uname)
 
 ifeq ($(UNAME), Darwin)
 
-FRAMEWORK_PATH = frameworks
+FRAMEWORK_PATH = minilibx_macos
 
-SDL = SDL2
-SDL_INC = $(FRAMEWORK_PATH)/$(SDL).framework/Headers
-FLAG_SDL2F = -F$(FRAMEWORK_PATH) -framework $(SDL) -rpath $(FRAMEWORK_PATH)
-
-SDL_TTF = SDL2_ttf
-SDL_TTF_INC = $(FRAMEWORK_PATH)/$(SDL_TTF).framework/Headers
-FLAG_SDLTTF = -F$(FRAMEWORK_PATH) -framework $(SDL_TTF) -rpath $(FRAMEWORK_PATH)
-
-SDL_IMAGE = SDL2_image
-SDL_IMAGE_INC = $(FRAMEWORK_PATH)/$(SDL_IMAGE).framework/Headers
-FLAG_SDLIMAGE = -F$(FRAMEWORK_PATH) -framework $(SDL_IMAGE) -rpath $(FRAMEWORK_PATH)
-
-FLAG_SDL = $(FLAG_SDL2F) $(FLAG_SDLTTF) $(FLAG_SDLIMAGE)
+FRAMEWORK = -framework OpenGL -framework AppKit
 
 endif
 
@@ -45,6 +33,7 @@ export CC = gcc
 export CC_FLAGS = -Wall -Wextra -Werror
 
 LIBFT = libft/libft.a
+LIBX = minilibx_macos/libmlx.a
 
 # SRCS #
 
@@ -90,7 +79,7 @@ INC_NAME =
 
 INC_PATH = includes
 
-INCLUDES = -I$(INC_PATH) -I$(SDL_INC) -I$(SDL_TTF_INC) -I$(SDL_IMAGE_INC)
+INCLUDES = -I$(INC_PATH)
 
 INC = $(addprefix $(INC_PATH)/, $(INC_NAME))
 
@@ -114,12 +103,15 @@ OBJ = $(addprefix $(OBJ_PATH)/, $(OBJ_NAME))
 
 all : $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(OBJ) $(LIBFT) $(LIBX)
 		@printf "\033[1mCompilation du projet \033[34m$@\033[0m \033[1men \033[31m$@\033[0m ✅\n"
-		@$(CC) $(CC_FLAGS) -o $@ $(OBJ) -L./libft -lft $(INCLUDES) $(FLAG_SDL)
+		@$(CC) $(CC_FLAGS) -o $@ $(OBJ) -L./libft -lft $(INCLUDES) $(LIBX) $(FRAMEWORK)
 
 $(LIBFT):
 		@make -C libft
+
+$(LIBX) : 
+		@make -C minilibx_macos
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC)
 		@ mkdir -p $(OBJ_SUB) 2> /dev/null || true
@@ -129,6 +121,7 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC)
 clean:
 		@ /bin/rm -rf $(OBJ_PATH)
 		@make clean -C libft
+		@make clean -C minilibx_macos
 
 fclean: clean
 		@ /bin/rm -f $(NAME)
