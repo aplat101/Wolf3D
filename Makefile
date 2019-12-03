@@ -6,7 +6,7 @@
 #    By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/26 16:49:34 by aplat        #+#   ##    ##    #+#        #
-#    Updated: 2019/12/03 16:50:22 by aplat       ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/03 23:23:50 by aplat       ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -63,7 +63,7 @@ SRC_UTILS_NAME =
 SRC_UTILS_PATH = utils
 SRC_UTILS = $(addprefix $(SRC_UTILS_PATH)/, $(SRC_UTILS_NAME))
 
-SRC_NAME = main.c\
+SRC_NAME = main.c \
 			$(SRC_WIN)\
 			$(SRC_ERROR)\
 			$(SRC_PARSER)\
@@ -88,7 +88,8 @@ INC = $(addprefix $(INC_PATH)/, $(INC_NAME))
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ_PATH = obj
 
-SUB_PATH = $(SRC_WIN_PATH)\
+SUB_PATH = $(SRC_PATH)\
+			$(SRC_WIN_PATH)\
 			$(SRC_ERROR_PATH)\
 			$(SRC_EVENT_PATH)\
 			$(SRC_PARSER_PATH)\
