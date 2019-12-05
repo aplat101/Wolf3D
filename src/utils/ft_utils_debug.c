@@ -6,12 +6,17 @@
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/05 15:56:27 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/05 16:07:21 by aplat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/05 19:18:43 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+void	ft_print_all(t_win *w)
+{
+	ft_print_map(w);
+}
 
 void	ft_print_map(t_win *w)
 {
@@ -28,7 +33,6 @@ void	ft_print_map(t_win *w)
 			if (j + 1 < w->nbwalls[i])
 				ft_putchar(' ');
 		}
-		if (i + 1 < w->nbline)
-			ft_putchar('\n');
+		ft_putchar('\n');
 	}
 }

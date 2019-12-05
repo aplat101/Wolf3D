@@ -6,7 +6,7 @@
 #    By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/26 16:49:34 by aplat        #+#   ##    ##    #+#        #
-#    Updated: 2019/12/05 16:11:04 by aplat       ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/05 19:16:14 by aplat       ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -39,7 +39,7 @@ LIBX = minilibx_macos/libmlx.a
 
 SRC_PATH = src
 
-SRC_WIN_NAME = 
+SRC_WIN_NAME = ft_window.c
 SRC_WIN_PATH = window
 SRC_WIN = $(addprefix $(SRC_WIN_PATH)/, $(SRC_WIN_NAME))
 
@@ -51,7 +51,8 @@ SRC_PARSER_NAME = ft_parser.c
 SRC_PARSER_PATH = parser
 SRC_PARSER = $(addprefix $(SRC_PARSER_PATH)/, $(SRC_PARSER_NAME))
 
-SRC_EVENT_NAME = 
+SRC_EVENT_NAME = ft_mlx.c\
+					ft_bind_keys.c
 SRC_EVENT_PATH = event
 SRC_EVENT = $(addprefix $(SRC_EVENT_PATH)/, $(SRC_EVENT_NAME))
 
@@ -60,7 +61,8 @@ SRC_RENDER_PATH = render
 SRC_RENDER = $(addprefix $(SRC_RENDER_PATH)/, $(SRC_RENDER_NAME))
 
 SRC_UTILS_NAME = ft_utils_error.c\
-					ft_utils_debug.c
+					ft_utils_debug.c\
+					ft_utils_parser.c
 SRC_UTILS_PATH = utils
 SRC_UTILS = $(addprefix $(SRC_UTILS_PATH)/, $(SRC_UTILS_NAME))
 
@@ -70,13 +72,14 @@ SRC_NAME = main.c \
 			$(SRC_PARSER)\
 			$(SRC_EVENT)\
 			$(SRC_RENDER)\
-			$(SRC_UTILS)\
+			$(SRC_UTILS)
 
 SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 
 # INCLUDES #
 
-INC_NAME = 
+INC_NAME = info.h\
+			wolf3d.h\
 
 INC_PATH = includes
 

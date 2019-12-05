@@ -1,45 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_utils_error.c                                 .::    .:/ .      .::   */
+/*   ft_mlx.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/04 18:20:46 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/05 18:57:34 by aplat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/12/05 17:10:48 by aplat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/12/05 17:46:37 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int		ft_valid_char(int c, t_win *w)
+void	ft_mlx(t_win *w)
 {
-	int	tmp;
-
-	tmp = w->cam_error;
-	if (c == 48 || c == 49)
-		return (1);
-	if (c == 50)
-	{
-		if (tmp == 0)
-		{
-			w->cam_error = 1;
-			return (1);
-		}
-		else
-			return (0);
-	}
-	if (c == '\0')
-		return (0);
-	return (0);
+	w->ptr = mlx_init();
+	ft_create_window(w);
+	mlx_hook(w->win, 2, 0, key_press, w);
+//	mlx_hook(w->win, 3, 0, key_release, w);
+//	mlx_hook(w->win, 4, 0, mouse_press, w);
+//	mlx_hook(w->win, 6, 0, mouse_move, w);
+	mlx_hook(w->win, 17, (1L << 17), close_cross, w);
+	mlx_loop(w->ptr);
 }
 
-int		ft_check_dir(char *av)
+int		close_cross(t_win *w)
 {
-	if (ft_strlen(av) != 1)
-		return (-1);
-	else if (av[0] != 'N' && av[0] != 'S' && av[0] != 'E' && av[0] != 'W')
-		return (-1);
+	w = NULL;
+	exit(0);
 	return (0);
 }
