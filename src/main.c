@@ -6,7 +6,7 @@
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/26 17:01:37 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/05 19:03:02 by aplat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/05 23:53:23 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,7 +27,10 @@ int     main(int ac, char **av)
 		return (EXIT_FAILURE);
     ft_parser(av, w);
     ft_print_all(w);
+    w->ptr = mlx_init();
+	ft_create_window(w);
     ft_init_values(w, ac, av);
+    ft_render(w);
     ft_mlx(w);
     return(0);
 }

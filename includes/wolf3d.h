@@ -6,7 +6,7 @@
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/26 18:08:25 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/05 19:20:44 by aplat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/05 23:40:47 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,8 +25,8 @@
 
 typedef struct	s_vec
 {
-	float		x;
-	float		y;
+	double		x;
+	double		y;
 }				t_vec;
 
 typedef struct  s_point
@@ -47,9 +47,38 @@ typedef struct  s_win
     int         **map;
 	int			h_cam;
 	int			fov;
-	t_point		*pos_cam;
+    double      angle_rot;
+	t_vec		*pos_cam;
+    t_point     *pos_map;
 	t_vec		*dir_cam;
+    t_vec       *plane;
+    double      cam_x;
+    t_vec       *raydir;
+	t_vec		*side;
+	t_vec		*delta;
+	t_point		*step;
+	int			touch;
+	int			dir_wall;
+	double		dist;
+	double		col;
+	int			h_wall;
+	int			d_start;
+	int			d_end;
 }               t_win;
+
+/*
+** Dir Window
+*/
+
+/*
+** Ft_window.c
+*/
+
+void	ft_create_window(t_win *w);
+
+/*
+** Dir Error
+*/
 
 /*
 ** Ft_error.c
@@ -58,6 +87,10 @@ typedef struct  s_win
 int		ft_checkerror(int ac, char **av, t_win *w);
 int		ft_checkvalidity(int fd, t_win *w);
 int		ft_check_line(char *line, t_win *w);
+
+/*
+** Dir Parser
+*/
 
 /*
 **  Ft_parser.c
@@ -86,6 +119,16 @@ int		close_cross(t_win *w);
 int		key_press(int keycode, t_win *w);
 
 /*
+** Dir Render
+*/
+
+/*
+** Ft_render.c
+*/
+
+void       ft_render(t_win *w);
+
+/*
 ** Dir Utils
 */
 
@@ -108,11 +151,5 @@ void	ft_print_map(t_win *w);
 */
 
 void    ft_set_cam_dir(int ac, char **av, t_win *w);
-
-/*
-** Ft_window.c
-*/
-
-void	ft_create_window(t_win *w);
 
 #endif

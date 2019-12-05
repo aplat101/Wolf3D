@@ -6,7 +6,7 @@
 #    By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/26 16:49:34 by aplat        #+#   ##    ##    #+#        #
-#    Updated: 2019/12/05 19:16:14 by aplat       ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/05 20:49:28 by aplat       ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -56,7 +56,7 @@ SRC_EVENT_NAME = ft_mlx.c\
 SRC_EVENT_PATH = event
 SRC_EVENT = $(addprefix $(SRC_EVENT_PATH)/, $(SRC_EVENT_NAME))
 
-SRC_RENDER_NAME = 
+SRC_RENDER_NAME = ft_render.c
 SRC_RENDER_PATH = render
 SRC_RENDER = $(addprefix $(SRC_RENDER_PATH)/, $(SRC_RENDER_NAME))
 

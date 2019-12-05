@@ -6,7 +6,7 @@
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/05 15:37:42 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/05 19:26:47 by aplat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/05 23:53:56 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -67,10 +67,14 @@ int		*ft_stock_map(int nbline, char *line, int *map, t_win *w)
 
 void	ft_set_cam_pos(t_win *w, int nbline, int j)
 {
-	if (!(w->pos_cam = malloc(sizeof(t_point))))
+	if (!(w->pos_cam = malloc(sizeof(t_vec))))
 		return ;
 	w->pos_cam->x = j;
 	w->pos_cam->y = nbline;
+	if (!(w->pos_map = malloc(sizeof(t_point))))
+		return ;
+	w->pos_map->x = (int)w->pos_cam->x;
+	w->pos_map->y = (int)w->pos_cam->y;
 }
 
 void	ft_init_values(t_win *w, int ac, char **av)
@@ -80,4 +84,17 @@ void	ft_init_values(t_win *w, int ac, char **av)
 	if (!(w->dir_cam = malloc(sizeof(t_vec))))
 		return ;
 	ft_set_cam_dir(ac, av, w);
+	if (!(w->plane = malloc(sizeof(t_vec))))
+		return ;
+	w->plane->x = 0;
+	w->plane->y = 0.6;
+	if (!(w->raydir = malloc(sizeof(t_vec))))
+		return ;
+	if (!(w->side = malloc(sizeof(t_vec))))
+		return ;
+	if (!(w->delta = malloc(sizeof(t_vec))))
+		return ;
+	if (!(w->step = malloc(sizeof(t_point))))
+		return ;
+	w->dir_wall = 0;
 }
