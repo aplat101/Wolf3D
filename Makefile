@@ -6,7 +6,7 @@
 #    By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/26 16:49:34 by aplat        #+#   ##    ##    #+#        #
-#    Updated: 2019/12/03 23:23:50 by aplat       ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/05 16:11:04 by aplat       ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -30,7 +30,7 @@ ifeq ($(UNAME), Linux)
 endif
 
 export CC = gcc
-export CC_FLAGS = -Wall -Wextra -Werror
+export CC_FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 LIBFT = libft/libft.a
 LIBX = minilibx_macos/libmlx.a
@@ -43,11 +43,11 @@ SRC_WIN_NAME =
 SRC_WIN_PATH = window
 SRC_WIN = $(addprefix $(SRC_WIN_PATH)/, $(SRC_WIN_NAME))
 
-SRC_ERROR_NAME = 
+SRC_ERROR_NAME = ft_error.c
 SRC_ERROR_PATH = error
 SRC_ERROR = $(addprefix $(SRC_ERROR_PATH)/, $(SRC_ERROR_NAME))
 
-SRC_PARSER_NAME = 
+SRC_PARSER_NAME = ft_parser.c
 SRC_PARSER_PATH = parser
 SRC_PARSER = $(addprefix $(SRC_PARSER_PATH)/, $(SRC_PARSER_NAME))
 
@@ -59,7 +59,8 @@ SRC_RENDER_NAME =
 SRC_RENDER_PATH = render
 SRC_RENDER = $(addprefix $(SRC_RENDER_PATH)/, $(SRC_RENDER_NAME))
 
-SRC_UTILS_NAME =
+SRC_UTILS_NAME = ft_utils_error.c\
+					ft_utils_debug.c
 SRC_UTILS_PATH = utils
 SRC_UTILS = $(addprefix $(SRC_UTILS_PATH)/, $(SRC_UTILS_NAME))
 

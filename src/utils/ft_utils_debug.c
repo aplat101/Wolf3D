@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.h                                  .::    .:/ .      .::   */
+/*   ft_utils_debug.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/25 13:58:18 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/04 19:01:20 by aplat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/12/05 15:56:27 by aplat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/12/05 16:07:21 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "wolf3d.h"
 
-# define BUFF_SIZE 1
+void	ft_print_map(t_win *w)
+{
+	int	i;
+	int	j;
 
-# include <unistd.h>
-# include <stdlib.h>
-
-int		get_next_line(const int fd, char **line);
-
-#endif
+	i = -1;
+	while (++i < w->nbline)
+	{
+		j = -1;
+		while (++j < w->nbwalls[i])
+		{
+			ft_putnbr(w->map[i][j]);
+			if (j + 1 < w->nbwalls[i])
+				ft_putchar(' ');
+		}
+		if (i + 1 < w->nbline)
+			ft_putchar('\n');
+	}
+}
