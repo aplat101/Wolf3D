@@ -6,7 +6,7 @@
 #    By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/26 16:49:34 by aplat        #+#   ##    ##    #+#        #
-#    Updated: 2019/12/05 20:49:28 by aplat       ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/09 18:54:32 by aplat       ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -62,7 +62,8 @@ SRC_RENDER = $(addprefix $(SRC_RENDER_PATH)/, $(SRC_RENDER_NAME))
 
 SRC_UTILS_NAME = ft_utils_error.c\
 					ft_utils_debug.c\
-					ft_utils_parser.c
+					ft_utils_parser.c\
+					ft_utils_render.c
 SRC_UTILS_PATH = utils
 SRC_UTILS = $(addprefix $(SRC_UTILS_PATH)/, $(SRC_UTILS_NAME))
 

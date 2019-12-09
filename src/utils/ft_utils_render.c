@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_bind_keys.c                                   .::    .:/ .      .::   */
+/*   ft_utils_render.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/05 17:18:00 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/09 19:03:18 by aplat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/12/09 18:53:59 by aplat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/12/09 21:24:56 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int		key_press(int keycode, t_win *w)
+void	ft_reset_values(t_win *w)
 {
-	if (keycode == K_ESC)
-	{
-		mlx_destroy_window(w->ptr, w->win);
-		free(w->map);
-		exit(0);
-		return (0);
-	}
-	return (0);
+	w->pos_map->x = (int)w->pos_cam->x;
+	w->pos_map->y = (int)w->pos_cam->y;
+//	w->plane->x += (0.6 / WD);
 }

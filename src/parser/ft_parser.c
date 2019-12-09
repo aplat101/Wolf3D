@@ -6,7 +6,7 @@
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/05 15:37:42 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/05 23:53:56 by aplat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/09 20:11:41 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,6 +40,7 @@ int		ft_parser(char **av, t_win *w)
 		w->map[i] = ft_stock_map(i, line, w->map[i], w);
 		free(line);
 	}
+	close(fd);
 	return (EXIT_SUCCESS);
 }
 
@@ -97,4 +98,6 @@ void	ft_init_values(t_win *w, int ac, char **av)
 	if (!(w->step = malloc(sizeof(t_point))))
 		return ;
 	w->dir_wall = 0;
+	w->touch = 0;
+	w->x = -1;
 }

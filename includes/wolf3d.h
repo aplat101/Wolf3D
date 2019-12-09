@@ -6,7 +6,7 @@
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/26 18:08:25 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/05 23:40:47 by aplat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/09 18:55:45 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,6 +64,7 @@ typedef struct  s_win
 	int			h_wall;
 	int			d_start;
 	int			d_end;
+	int			x;
 }               t_win;
 
 /*
@@ -151,5 +152,11 @@ void	ft_print_map(t_win *w);
 */
 
 void    ft_set_cam_dir(int ac, char **av, t_win *w);
+
+/*
+** Ft_utils_render.c
+*/
+
+void	ft_reset_values(t_win *w);
 
 #endif

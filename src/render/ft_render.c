@@ -6,7 +6,7 @@
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/05 20:48:59 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/05 23:57:22 by aplat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/09 21:28:04 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,14 +15,15 @@
 
 void		ft_render(t_win *w)
 {
-    int		x;
-
-	x = -1;
-	while (++x < 50)
+	if (w->x == WD - 1)
+		return ;
+	while (++(w->x) < WD)
 	{
-		w->cam_x = 2 * x / (double)WD - 1;
+//		ft_reset_values(w);
+		w->cam_x = 2 * w->x / (double)WD - 1;
 		w->raydir->x = w->dir_cam->x + w->plane->x * w->cam_x;
 		w->raydir->y = w->dir_cam->y + w->plane->y * w->cam_x;
+		ft_reset_values(w);
 		w->delta->x = fabs(1 / w->raydir->x);
 		w->delta->y = fabs(1 / w->raydir->y);
 		if (w->raydir->x < 0)
@@ -59,6 +60,8 @@ void		ft_render(t_win *w)
 				w->pos_map->y += w->step->y;
 				w->dir_wall = 1;
 			}
+			if (w->pos_map->x < 0 || w->pos_map->x > w->nbwalls[0] - 1 || w->pos_map->y < 0 || w->pos_map->y > w->nbline - 1)
+				return (ft_render(w));
 			if (w->map[w->pos_map->x][w->pos_map->y] == 1)
 				w->touch = 1;
 		}
@@ -75,7 +78,7 @@ void		ft_render(t_win *w)
 			w->d_end = HH - 1;
 		while (w->d_start < w->d_end)
 		{
-			w->img[(int)((w->d_start * WD) + x)] = 6505500;
+			w->img[(int)((w->d_start * WD) + w->x)] = 6505500;
 			++(w->d_start);
 		}
 	}
@@ -83,5 +86,4 @@ void		ft_render(t_win *w)
 	printf("win %p\n", w->win);
 	printf("img ptr %p\n", w->img_ptr);
 	printf("img %p\n", w->img);
-	mlx_put_image_to_window(w->img, w->win, w->img_ptr, 0, 0);
 }
