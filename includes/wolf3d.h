@@ -6,7 +6,7 @@
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/26 18:08:25 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/09 18:55:45 by aplat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/13 10:02:55 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -127,7 +127,9 @@ int		key_press(int keycode, t_win *w);
 ** Ft_render.c
 */
 
-void       ft_render(t_win *w);
+void	ft_render(t_win *w);
+void	ft_determine_step(t_win *w);
+void	ft_take_inter(t_win *w);
 
 /*
 ** Dir Utils
