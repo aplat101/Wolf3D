@@ -6,7 +6,7 @@
 #    By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/26 16:49:34 by aplat        #+#   ##    ##    #+#        #
-#    Updated: 2019/12/09 18:54:32 by aplat       ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/16 10:37:26 by aplat       ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -52,11 +52,13 @@ SRC_PARSER_PATH = parser
 SRC_PARSER = $(addprefix $(SRC_PARSER_PATH)/, $(SRC_PARSER_NAME))
 
 SRC_EVENT_NAME = ft_mlx.c\
-					ft_bind_keys.c
+					ft_bind_keys.c\
+					ft_move.c
 SRC_EVENT_PATH = event
 SRC_EVENT = $(addprefix $(SRC_EVENT_PATH)/, $(SRC_EVENT_NAME))
 
-SRC_RENDER_NAME = ft_render.c
+SRC_RENDER_NAME = ft_render.c\
+					ft_textures.c
 SRC_RENDER_PATH = render
 SRC_RENDER = $(addprefix $(SRC_RENDER_PATH)/, $(SRC_RENDER_NAME))
 

@@ -6,7 +6,7 @@
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/26 18:08:25 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/13 10:02:55 by aplat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/16 13:49:22 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,6 +22,12 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
+
+typedef struct	s_tex
+{
+	void		*img;
+	int			*data;
+}				t_tex;
 
 typedef struct	s_vec
 {
@@ -62,9 +68,11 @@ typedef struct  s_win
 	double		dist;
 	double		col;
 	int			h_wall;
+	int			h_wall_max;
 	int			d_start;
 	int			d_end;
 	int			x;
+	t_tex		*text[6];
 }               t_win;
 
 /*
@@ -120,6 +128,15 @@ int		close_cross(t_win *w);
 int		key_press(int keycode, t_win *w);
 
 /*
+** Ft_move.c
+*/
+
+void	ft_move_right(t_win *w);
+void	ft_move_left(t_win *w);
+void	ft_move_forward(t_win *w);
+void	ft_move_backward(t_win *w);
+
+/*
 ** Dir Render
 */
 
@@ -130,6 +147,13 @@ int		key_press(int keycode, t_win *w);
 void	ft_render(t_win *w);
 void	ft_determine_step(t_win *w);
 void	ft_take_inter(t_win *w);
+
+/*
+** Ft_textures.c
+*/
+
+void	ft_load_textures(t_win *w);
+void	ft_alloc_text(t_win *w);
 
 /*
 ** Dir Utils
@@ -160,5 +184,6 @@ void    ft_set_cam_dir(int ac, char **av, t_win *w);
 */
 
 void	ft_reset_values(t_win *w);
+void	ft_clear(t_win *w);
 
 #endif
