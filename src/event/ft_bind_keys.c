@@ -6,7 +6,7 @@
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/05 17:18:00 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/16 04:32:57 by aplat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/18 19:02:32 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,5 +30,7 @@ int		key_press(int keycode, t_win *w)
 		ft_move_forward(w);
 	if (keycode == K_DOWN)
 		ft_move_backward(w);
+	if (keycode == K_T)
+		ft_textures(w);
 	return (0);
 }

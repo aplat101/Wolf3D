@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_window.c                                      .::    .:/ .      .::   */
+/*   ft_utils.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/05 17:44:57 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/18 17:51:01 by aplat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/12/18 18:32:41 by aplat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/12/18 18:36:12 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	ft_create_window(t_win *w)
+void	ft_set_vec(t_vec *v, double x, double y)
 {
-	int	bpp;
-	int	s_l;
-	int	endian;
+	v->x = x;
+	v->y = y;
+}
 
-	w->win = mlx_new_window(w->ptr, WD, HH, "Wolf 3D");
-	w->img_ptr = mlx_new_image(w->ptr, WD, HH);
-	w->img = (int*)mlx_get_data_addr(w->img_ptr, &(bpp), &(s_l), &(endian));
+void	ft_set_point(t_point *p, int x, int y)
+{
+	p->x = x;
+	p->y = y;
 }

@@ -6,16 +6,16 @@
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/04 16:48:11 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/05 19:04:13 by aplat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/18 19:06:44 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int		ft_checkerror(int ac, char **av, t_win *w)
+int				ft_checkerror(int ac, char **av, t_win *w)
 {
-	int	fd;
+	int			fd;
 
 	if (ac == 3)
 	{
@@ -48,9 +48,9 @@ int		ft_checkerror(int ac, char **av, t_win *w)
 	return (0);
 }
 
-int		ft_checkvalidity(int fd, t_win *w)
+int				ft_checkvalidity(int fd, t_win *w)
 {
-	char 		*line;
+	char		*line;
 	int			res;
 	static int	y;
 	static int	nbword;
@@ -77,10 +77,10 @@ int		ft_checkvalidity(int fd, t_win *w)
 	return (y);
 }
 
-int		ft_check_line(char *line, t_win *w)
+int				ft_check_line(char *line, t_win *w)
 {
-	int	i;
-	int	res;
+	int			i;
+	int			res;
 
 	i = 0;
 	res = ft_countwords(line, ' ');
@@ -92,8 +92,10 @@ int		ft_check_line(char *line, t_win *w)
 			i++;
 		if (line[i] == '\0')
 			return (res);
-		if (ft_valid_char(line[i], w) == 0 || (ft_valid_char(line[i], w) == 1 && ft_valid_char(line[i + 1], w) == 1))
-			return(-1);
+		if (ft_valid_char(line[i], w) == 0 ||
+			(ft_valid_char(line[i], w) == 1 &&
+			ft_valid_char(line[i + 1], w) == 1))
+			return (-1);
 		i++;
 	}
 	return (res);

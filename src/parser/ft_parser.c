@@ -6,17 +6,17 @@
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/05 15:37:42 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/16 13:49:48 by aplat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/18 18:57:03 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int		ft_parser(char **av, t_win *w)
+int			ft_parser(char **av, t_win *w)
 {
-	int	fd;
-	int	res;
+	int		fd;
+	int		res;
 	char	*line;
 	int		i;
 
@@ -28,10 +28,8 @@ int		ft_parser(char **av, t_win *w)
 		close(fd);
 		return (-1);
 	}
-	if (!(w->map = (int**)malloc(sizeof(int*) * (w->nbline))))
-		return (EXIT_FAILURE);
-	if (!(w->nbwalls = malloc(sizeof(int) * w->nbline)))
-		return (EXIT_FAILURE);
+	if (ft_parser_alloc(w) == -1)
+		return (-1);
 	while ((res = get_next_line(fd, &line)) == 1 && fd > 0)
 	{
 		w->nbwalls[++i] = ft_countwords(line, ' ');
@@ -44,10 +42,10 @@ int		ft_parser(char **av, t_win *w)
 	return (EXIT_SUCCESS);
 }
 
-int		*ft_stock_map(int nbline, char *line, int *map, t_win *w)
+int			*ft_stock_map(int nbline, char *line, int *map, t_win *w)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -61,13 +59,19 @@ int		*ft_stock_map(int nbline, char *line, int *map, t_win *w)
 		if (map[j] == 2)
 			ft_set_cam_pos(w, nbline, j);
 		j++;
-		i++;		
+		i++;
 	}
 	return (map);
 }
 
-void	ft_set_cam_pos(t_win *w, int nbline, int j)
+void		ft_set_cam_pos(t_win *w, int nbline, int j)
 {
+	if (j == w->nbwalls[0] - 1 || nbline == w->nbline - 1
+		|| j == 0 || nbline == 0)
+	{
+		ft_putstr("Invalid Camera!\n");
+		exit(0);
+	}
 	if (!(w->pos_cam = malloc(sizeof(t_vec))))
 		return ;
 	w->pos_cam->x = j + 0.5;
@@ -78,10 +82,10 @@ void	ft_set_cam_pos(t_win *w, int nbline, int j)
 	w->pos_map->y = (int)w->pos_cam->y;
 }
 
-void	ft_init_values(t_win *w, int ac, char **av)
+void		ft_init_values(t_win *w, int ac, char **av)
 {
 	w->h_cam = HH / 2;
-	w->h_wall = HH;
+	w->h_wall = 500;
 	w->h_wall_max = HH / 2;
 	w->fov = 60;
 	if (!(w->dir_cam = malloc(sizeof(t_vec))))
@@ -97,7 +101,11 @@ void	ft_init_values(t_win *w, int ac, char **av)
 		return ;
 	if (!(w->step = malloc(sizeof(t_point))))
 		return ;
+	if (!(w->t = malloc(sizeof(t_point))))
+		return ;
 	w->dir_wall = 0;
 	w->touch = 0;
 	w->x = -1;
+	w->x_wall = 0;
+	w->texture = 0;
 }
