@@ -6,7 +6,7 @@
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/04 16:48:11 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/18 19:06:44 by aplat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/19 13:13:41 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,15 +28,10 @@ int				ft_checkerror(int ac, char **av, t_win *w)
 	}
 	else
 		fd = open(av[ac - 1], O_RDONLY);
-	if (fd < 0)
-	{
-		ft_putstr("Wolf3d need an existing argument!\n");
-		close(fd);
-		return (-1);
-	}
-	if ((w->nbline = ft_checkvalidity(fd, w)) < 3)
+	if ((w->nbline = ft_checkvalidity(fd, w)) < 3 || fd < 0)
 	{
 		ft_putstr("Invalid File!\n");
+		close(fd);
 		return (-1);
 	}
 	if (w->cam_error == 0)
@@ -44,7 +39,6 @@ int				ft_checkerror(int ac, char **av, t_win *w)
 		ft_putstr("Camera not present in the map!\n");
 		return (-1);
 	}
-	ft_putstr("Correct File!\n");
 	return (0);
 }
 

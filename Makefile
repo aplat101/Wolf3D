@@ -6,7 +6,7 @@
 #    By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/26 16:49:34 by aplat        #+#   ##    ##    #+#        #
-#    Updated: 2019/12/18 18:37:28 by aplat       ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/19 13:35:03 by aplat       ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -141,6 +141,6 @@ re: fclean all
 norme: 
 	@norminette $(SRC_PATH)
 	@norminette $(INC_PATH)
-	@norminette $(LIBFT)
+	@make norme -C libft
 
-.PHONY: all, clean, fclean, re
+.PHONY: all, clean, fclean, re, norme

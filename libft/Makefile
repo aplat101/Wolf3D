@@ -6,7 +6,7 @@
 #    By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/03 16:28:38 by aplat        #+#   ##    ##    #+#        #
-#    Updated: 2019/06/20 17:24:31 by aplat       ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/19 13:36:05 by aplat       ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -73,4 +73,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all re clean fclean
+norme:
+	@norminette $(COMP)
+
+.PHONY: all re clean fclean, norme

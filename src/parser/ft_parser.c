@@ -6,7 +6,7 @@
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/05 15:37:42 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/18 18:57:03 by aplat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/19 11:09:01 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -85,7 +85,8 @@ void		ft_set_cam_pos(t_win *w, int nbline, int j)
 void		ft_init_values(t_win *w, int ac, char **av)
 {
 	w->h_cam = HH / 2;
-	w->h_wall = 500;
+	w->cam_x = 0;
+	w->h_wall = HH;
 	w->h_wall_max = HH / 2;
 	w->fov = 60;
 	if (!(w->dir_cam = malloc(sizeof(t_vec))))

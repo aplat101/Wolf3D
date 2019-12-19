@@ -6,7 +6,7 @@
 /*   By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/26 18:08:25 by aplat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/18 18:54:19 by aplat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/19 13:05:41 by aplat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,9 +27,6 @@ typedef struct	s_tex
 {
 	void		*img;
 	int			*data;
-	int			bpp;
-	int			s_l;
-	int			endian;
 }				t_tex;
 
 typedef struct	s_vec
@@ -73,10 +70,11 @@ typedef struct	s_win
 	double		col;
 	int			h_wall;
 	int			h_wall_max;
+	int			h;
 	int			d_start;
 	int			d_end;
 	int			x;
-	t_tex		*text[6];
+	t_tex		*text[4];
 	double		x_wall;
 	int			texture;
 }				t_win;
@@ -90,6 +88,10 @@ typedef struct	s_win
 */
 
 void			ft_create_window(t_win *w);
+void			ft_draw_sky_floor(t_win *w);
+void			ft_draw_with_text(t_win *w);
+void			ft_draw_without_text(t_win *w);
+void			ft_draw(t_win *w);
 
 /*
 ** Dir Error
@@ -198,8 +200,9 @@ int				ft_parser_alloc(t_win *w);
 ** Ft_utils_render.c
 */
 
-void			ft_reset_values(t_win *w);
+void			ft_set_values(t_win *w);
 void			ft_clear(t_win *w);
 void			ft_calcul_wallx(t_win *w);
+void			ft_calcul_hwall(t_win *w);
 
 #endif
