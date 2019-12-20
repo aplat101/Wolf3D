@@ -6,7 +6,7 @@
 #    By: aplat <aplat@student.le-101.fr>            +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/26 16:49:34 by aplat        #+#   ##    ##    #+#        #
-#    Updated: 2019/12/19 13:35:03 by aplat       ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/20 22:07:29 by aplat       ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -30,7 +30,7 @@ ifeq ($(UNAME), Linux)
 endif
 
 export CC = gcc
-export CC_FLAGS = -Wall -Wextra -Werror -fsanitize=address
+export CC_FLAGS = -Wall -Wextra -Werror #-fsanitize=address
 
 LIBFT = libft/libft.a
 LIBX = minilibx_macos/libmlx.a
