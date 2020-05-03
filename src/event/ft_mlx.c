@@ -28,7 +28,7 @@ void	ft_mlx(t_win *w)
 
 int		close_cross(t_win *w)
 {
-	w = NULL;
+	(void) w;
 	exit(0);
 	return (0);
 }

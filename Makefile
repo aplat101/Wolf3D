@@ -19,21 +19,32 @@ UNAME := $(shell uname)
 
 ifeq ($(UNAME), Darwin)
 
+CC = gcc
+
 FRAMEWORK_PATH = minilibx_macos
 
 FRAMEWORK = -framework OpenGL -framework AppKit
+
+LIBX = minilibx_macos/libmlx.a
 
 endif
 
 ifeq ($(UNAME), Linux)
 
+CC = clang
+
+FRAMEWORK_PATH = libxlinux
+
+LIBX = libxlinux/libmlx_Linux.a
+
+MLX_L = -lX11 -lXext -lm -lbsd -lmlx
+
 endif
 
-export CC = gcc
+#export CC = gcc
 export CC_FLAGS = -Wall -Wextra -Werror #-fsanitize=address
 
 LIBFT = libft/libft.a
-LIBX = minilibx_macos/libmlx.a
 
 # SRCS #
 
@@ -87,7 +98,7 @@ INC_NAME = info.h\
 
 INC_PATH = includes
 
-INCLUDES = -I$(INC_PATH)
+INCLUDES = -I $(INC_PATH)
 
 INC = $(addprefix $(INC_PATH)/, $(INC_NAME))
 
@@ -114,13 +125,22 @@ all : $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) $(LIBX)
 		@printf "\033[1mCompilation du projet \033[34m$@\033[0m \033[1men \033[31m$@\033[0m ✅\n"
-		@$(CC) $(CC_FLAGS) -o $@ $(OBJ) -L./libft -lft $(INCLUDES) $(LIBX) $(FRAMEWORK)
+ifeq ($(UNAME), Darwin)
+	@$(CC) $(CC_FLAGS) -o $@ $(OBJ) -L./libft -lft $(INCLUDES) $(LIBX) $(FRAMEWORK)
+else
+	@$(CC) $(CC_FLAGS) -o $@ $(OBJ) -L./libft -lft $(INCLUDES) -L./libxlinux $(MLX_L) #$(MLX)
+endif
 
 $(LIBFT):
 		@make -C libft
 
-$(LIBX) : 
-		@make -C minilibx_macos
+$(LIBX) :
+ifeq ($(UNAME), Darwin)	
+	@make -C minilibx_macos
+else	
+	@make -C libxlinux
+endif
+
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC)
 		@ mkdir -p $(OBJ_SUB) 2> /dev/null || true
@@ -131,6 +151,7 @@ clean:
 		@ /bin/rm -rf $(OBJ_PATH)
 		@make clean -C libft
 		@make clean -C minilibx_macos
+		@make clean -C libxlinux
 
 fclean: clean
 		@ /bin/rm -f $(NAME)

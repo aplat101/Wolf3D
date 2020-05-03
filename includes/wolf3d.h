@@ -14,7 +14,7 @@
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
-# include "../minilibx_macos/mlx.h"
+# include "../libxlinux/mlx.h"
 # include "../libft/libft.h"
 # include "key_map_macos.h"
 # include "info.h"

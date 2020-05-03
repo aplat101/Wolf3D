@@ -13,6 +13,22 @@
 
 NAME = libft.a
 
+# OS DEFINITION #
+
+UNAME := $(shell uname)
+
+ifeq ($(UNAME), Darwin)
+
+CC = gcc
+
+endif
+
+ifeq ($(UNAME), Linux)
+
+CC = clang
+
+endif
+
 COMP = ft_memset.c ft_memcpy.c ft_memccpy.c \
 	   ft_bzero.c ft_memmove.c ft_memchr.c \
 	   ft_memcmp.c ft_strlen.c ft_strdup.c \
@@ -50,9 +66,7 @@ COMP = ft_memset.c ft_memcpy.c ft_memccpy.c \
 
 HEAD = -I libft.h
 
-CC = gcc
-
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fPIC
 
 OBJS = $(COMP:.c=.o)
 
