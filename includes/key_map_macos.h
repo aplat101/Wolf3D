@@ -14,10 +14,10 @@
 #ifndef KEY_MAP_MACOS_H
 # define KEY_MAP_MACOS_H
 
-# define K_A			0x0000
+# define K_A			113
 # define K_B			0x000B
 # define K_C			0x0008
-# define K_D			0x0002
+# define K_D			100
 # define K_E			0x000E
 # define K_F			0x0003
 # define K_G			0x0005
@@ -32,11 +32,11 @@
 # define K_P			0x0023
 # define K_Q			0x000C
 # define K_R			0x000F
-# define K_S			0x0001
+# define K_S			115
 # define K_T			0x0011
 # define K_U			0x0020
 # define K_V			0x0009
-# define K_W			0x000D
+# define K_W			122
 # define K_X			0x0007
 # define K_Y			0x0010
 # define K_Z			0x0006
@@ -78,7 +78,7 @@
 
 # define K_MINUS		0x001B
 # define K_EQUAL		0x0018
-# define K_ESC			0x0035
+# define K_ESC			65307
 # define K_TAB			0x0030
 # define K_SPACE		0x0031
 # define K_ENTER		0x0024

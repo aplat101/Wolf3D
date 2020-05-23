@@ -64,7 +64,7 @@ COMP = ft_memset.c ft_memcpy.c ft_memccpy.c \
 	   first_word.c ft_swap.c rev_print.c ft_powf.c\
 
 
-HEAD = -I libft.h
+HEAD = -I ./#libft.h
 
 CFLAGS = -Wall -Werror -Wextra -fPIC
 

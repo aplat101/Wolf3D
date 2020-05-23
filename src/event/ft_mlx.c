@@ -21,13 +21,14 @@
 
 void	ft_mlx(t_win *w)
 {
-	mlx_hook(w->win, 2, 0, key_press, w);
+	mlx_hook(w->win, 2, 1L << 0, key_press, w);
 	mlx_hook(w->win, 17, (1L << 17), close_cross, w);
 	mlx_loop(w->ptr);
 }
 
 int		close_cross(t_win *w)
 {
+	printf("check\n");
 	(void) w;
 	exit(0);
 	return (0);

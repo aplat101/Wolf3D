@@ -42,7 +42,7 @@ MLX_L = -lX11 -lXext -lm -lbsd -lmlx
 endif
 
 #export CC = gcc
-export CC_FLAGS = -Wall -Wextra -Werror #-fsanitize=address
+CC_FLAGS = -Wall -Wextra -Werror -g #-fsanitize=leak
 
 LIBFT = libft/libft.a
 
